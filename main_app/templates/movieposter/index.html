@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Movie Poster List </h1>
+
+{% for movie in movieposter %}
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ movieposter.name }}</span>
+    <p>year: {{ movieposter.year }}</p>
+    <p>description: {{ movieposter.description }}</p>
+    <p>duration: {{ movieposter.duration }}</p>
+    <p>actors: {{ movieposter.actors }}</p>
+    {% if year > 1600 %}
+    <p>year: {{ movieposter.year }}</p>
+    {% else %}
+    <p>movie is too old</p>
+    {% endif %}
+  </div>
+
+</div>
+{% endfor %}
+
+{% endblock %}

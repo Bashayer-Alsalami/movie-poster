@@ -25,5 +25,10 @@ def about(request):
   return render(request, 'about.html')
 
 def movieposter_index(request):
-  moviePosters = MoviePoster.objects.all()
-  return render(request, 'movieposter/index.html', {'moviePosters': moviePosters})
+  movieposters = MoviePoster.objects.all()
+  return render(request, 'movieposter/index.html', {'movieposters': movieposters})
+
+def movieposter_detail(request, movie_id):
+  movie = MoviePoster.objects.get(id=movie_id)
+  return render(request,'movieposter/detail.html', {'movie':movie})
+

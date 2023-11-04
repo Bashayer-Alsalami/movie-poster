@@ -2,22 +2,19 @@
 
 {% block content %}
 
-<h1> Movie Poster List </h1>
+<h1> Movie Poster Detail </h1>
 
-{% for movie in movieposters %}
 <div class="card">
-  <a href="{% url 'detail' movie.id %}">
-
   <div class="card-content">
     <div class="flex-container">
 <div>
     
     <span class="card-title">{{ movie.name }}</span>
-    <!-- <p>year: {{ movie.year }}</p> -->
+    <p>year: {{ movie.year }}</p>
     <p>description: {{ movie.description }}</p>
     <p>duration: {{ movie.duration }}</p>
     <p>actors: {{ movie.actors }}</p>
-    {% if movie.year > 1700 %}
+    {% if year > 1600 %}
     <p>year: {{ movie.year }}</p>
     {% else %}
     <p>movie is too old</p>
@@ -25,13 +22,13 @@
   
   </div>
   <div>
+</div>
     {% load static %}
-    <img width="100px" height='100px'src="{% static movie.image|cut:'main_app/static/' %}"/>
+    <img width="200px" height='200px'src="{% static movie.image|cut:'main_app/static/' %}"/>
   </div>
 </div>
-  </div>
-</a>
+
 </div>
-{% endfor %}
+
 
 {% endblock %}

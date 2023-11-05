@@ -39,7 +39,7 @@
   <form action="{% url 'add_rating' movie.id %}" method="POST">
     {% csrf_token %}
     {{ rating_form.as_p }}
-    <input type="submit" class="btn" value="Add Rating">
+    <input type="submit" class="btn blue-grey darken-4" value="Add Rating">
 </form>
   <table class="striped">
     <thead>

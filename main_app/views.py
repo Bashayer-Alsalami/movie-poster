@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import MoviePoster
+from django.views.generic.edit import CreateView,UpdateView, DeleteView
+from .forms import RatingForm
 # Create your views here.
 
 # class Coin:
@@ -17,6 +19,17 @@ from .models import MoviePoster
 #   Coin('70th', 'whizzed', 25, 'saudi', 'rosegold'),
 #   Coin('20th', 'need polishing', 50, 'unknown', 'gold')
 # ]
+class MoviePosterCreate(CreateView):
+  model = MoviePoster
+  fields = ['name', 'year', 'duration', 'description', 'actors', 'image']
+
+class MoviePosterUpdate(UpdateView):
+  model = MoviePoster
+  fields = ['name', 'year', 'duration', 'description', 'actors', 'image']
+
+class MoviePosterDelete(DeleteView):
+  model = MoviePoster
+  success_url='/movieposter/'
 
 def home(request):
   return render(request, 'index.html')
@@ -28,7 +41,15 @@ def movieposter_index(request):
   movieposters = MoviePoster.objects.all()
   return render(request, 'movieposter/index.html', {'movieposters': movieposters})
 
-def movieposter_detail(request, movie_id):
-  movie = MoviePoster.objects.get(id=movie_id)
-  return render(request,'movieposter/detail.html', {'movie':movie})
+def movieposter_detail(request, movieposter_id):
+  movie = MoviePoster.objects.get(id=movieposter_id)
+  rating_form = RatingForm()
+  return render(request,'movieposter/detail.html', {'movie':movie, 'rating_form':rating_form})
 
+def add_rating(request, movieposter_id):
+  form = RatingForm(request.POST)
+  if form.is_valid():
+    new_rating = form.save(commit = False)
+    new_rating.movieposter_id = movieposter_id
+    new_rating.save()
+  return redirect('detail', movieposter_id=movieposter_id) 

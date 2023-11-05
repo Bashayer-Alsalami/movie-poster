@@ -17,6 +17,7 @@
     <p>description: {{ movie.description }}</p>
     <p>duration: {{ movie.duration }}</p>
     <p>actors: {{ movie.actors }}</p>
+    
     {% if movie.year > 1700 %}
     <p>year: {{ movie.year }}</p>
     {% else %}
@@ -26,7 +27,7 @@
   </div>
   <div>
     {% load static %}
-    <img width="100px" height='100px'src="{% static movie.image|cut:'main_app/static/' %}"/>
+    <img width="200px" height='200px'src="{% static movie.image|cut:'main_app/static/' %}"/>
   </div>
 </div>
   </div>

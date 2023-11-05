@@ -7,17 +7,19 @@
   <title>Movie Poster Collector</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper blue-grey lighten-1">
         <ul>
-          <li><a href="/" class="left brand-logo">MoviePoster</a></li>
+          <li><a href="{% url 'home' %}" class="left brand-logo">MoviePoster</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/movieposter">View All My Poster</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li> <a href="{% url 'movieposter_create' %}">Add Movie Poster</a></li>
+          <li><a href="{% url 'index' %}">View All My Poster</a></li>
         </ul>
   
       </div>
@@ -28,8 +30,8 @@
     {% endblock %}
   </main>
   
-  <footer class="page-footer">
-    <div class="right">
+  <footer class="page-footer blue-grey lighten-1">
+    <div class="right blue-grey lighten-1">
     All Rights Reserved, &copy; 2023 Movies Posters Collector
   </div>
   </footer>

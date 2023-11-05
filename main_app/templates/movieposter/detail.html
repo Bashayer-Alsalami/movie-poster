@@ -10,16 +10,22 @@
 <div>
     
     <span class="card-title">{{ movie.name }}</span>
-    <p>year: {{ movie.year }}</p>
+
     <p>description: {{ movie.description }}</p>
     <p>duration: {{ movie.duration }}</p>
     <p>actors: {{ movie.actors }}</p>
-    {% if year > 1600 %}
+    
+    {% if movie.year > 1700 %}
     <p>year: {{ movie.year }}</p>
     {% else %}
     <p>movie is too old</p>
     {% endif %}
-  
+
+
+  <div class="card-action">
+<a href="{% url 'movieposter_update' movie.id %}">Edit</a>
+<a href="{% url 'movieposter_delete' movie.id %}">Delete</a>
+  </div>
   </div>
   <div>
 </div>
@@ -29,6 +35,44 @@
 </div>
 
 </div>
+<div>
+  <form action="{% url 'add_rating' movie.id %}" method="POST">
+    {% csrf_token %}
+    {{ rating_form.as_p }}
+    <input type="submit" class="btn" value="Add Rating">
+</form>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- built in method (cat.feeding_set.all) that give all record -->
+      {% for rating in movie.rating_set.all %}
+      <tr>
+        <td>{{rating.date}}</td>
+        <td>{{rating.get_rank_display}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
 
+  </table>
+</div>
+
+  <!-- write JS AT the end but inside endblock -->
+<script>
+  let dateEle = document.getElementById('id_date');
+  M.Datepicker.init(dateEle, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoclose: true
+  })
+
+  let rankingEle = document.getElementById('id_rank');
+  M.FormSelect.init(rankingEle);
+</script>
 
 {% endblock %}

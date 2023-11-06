@@ -12,14 +12,17 @@
 <body>
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper blue-grey lighten-1">
+      <div class="nav-wrapper black">
         <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">MoviePoster</a></li>
+          <li><a href="{% url 'home' %}" class="left brand-logo"><img src="\static\uploads\movielogo.PNG" alt="" width="100px" height="65"></a></li>
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li>
           <li> <a href="{% url 'movieposter_create' %}">Add Movie Poster</a></li>
           <li><a href="{% url 'index' %}">View All My Poster</a></li>
+
+          <li><a href="{% url 'actors_index' %}">View All Actors</a></li>
+          <li><a href="{% url 'actors_create' %}">Add Actor</a></li>
         </ul>
   
       </div>

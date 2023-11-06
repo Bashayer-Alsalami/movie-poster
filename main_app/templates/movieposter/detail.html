@@ -41,6 +41,11 @@
     {{ rating_form.as_p }}
     <input type="submit" class="btn blue-grey darken-4" value="Add Rating">
 </form>
+{% if movie.rate_movie > 3 %}
+<div class="card-panel teal-text center-align">{{movie.name}} is a Great Movie</div>
+  {% else %}
+<div class="card-panel red-text center-align">{{movie.name}} might be not be that Good</div>
+  {% endif %}
   <table class="striped">
     <thead>
       <tr>
@@ -60,6 +65,58 @@
 
   </table>
 </div>
+  <hr>
+
+
+<div class="row">
+  <div class="col s6 ">
+    <h3> {{ movie.name }}'s Actors</h3>
+    {% if movie.actors.count  %}
+      {% for actor in movie.actors.all  %}
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">
+            A <span > {{actor.age}} Years Old</span> {{ actor.name }}
+          </span>
+        </div> 
+        <div class="card-action">
+          <form action="{% url 'unassoc_actor' movie.id actor.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn grey darken-1">Remove</button>
+          </form>
+      </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <h5> No Actors Yet :( </h5>
+      {% endif %}
+    </div>
+
+  <div class="col s6">
+    <h3>Available Actors</h3>
+    {% if actors.count %}
+    {% for actor in actors.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          A <span>{{ actor.name}}</span> {{ actor.age }} Years Old
+        </span>
+      </div>
+      <div class="card-action">
+        <form action="{% url 'assoc_actor' movie.id actor.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn grey darken-1">Add</button>
+        </form>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <h5>{{ movie.name }} Already has All Actors Available.</h5>
+    {% endif %}
+
+  </div>
+  </div>
 
   <!-- write JS AT the end but inside endblock -->
 <script>

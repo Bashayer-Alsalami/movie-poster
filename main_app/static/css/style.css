@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
 body{
   background-color: #37474f;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   font-family: 'Times New Roman', Times, serif;
-  color: black;
+  /* color: black; */
+  /* background-image: url('main_app\static\uploads\moviebkg.jpg'); */
+
 }
 main{
   flex: 1 0 auto;
@@ -19,3 +23,13 @@ text-align: right;
   justify-content: space-between;
 
 }
+.mainbk{
+  background-size: 100hv;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+/* .container{
+  background-image: url('//uploads/moviebkg.jpg');
+} */
+
+.f-heading{
+  font-family: 'Dancing Script', cursive;}

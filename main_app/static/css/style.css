@@ -5,7 +5,8 @@ body{
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: 'Times New Roman', Times, serif;
+  /* font-family: 'Times New Roman', Times, serif; */
+  font-family: 'Dancing Script', cursive;
   /* color: black; */
   /* background-image: url('main_app\static\uploads\moviebkg.jpg'); */
 
@@ -32,4 +33,5 @@ text-align: right;
 } */
 
 .f-heading{
-  font-family: 'Dancing Script', cursive;}
+  /* font-family: 'Dancing Script', cursive; */
+}

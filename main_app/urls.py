@@ -22,6 +22,8 @@ urlpatterns = [
   path('movieposter/<int:movieposter_id>/assoc_actor/<int:actor_id>/', views.assoc_actor, name='assoc_actor'),
 
     # unassosiate a toy with a cat
-  path('movieposter/<int:movieposter_id>/unassoc_actor/<int:actor_id>/', views.unassoc_actor, name='unassoc_actor')
+  path('movieposter/<int:movieposter_id>/unassoc_actor/<int:actor_id>/', views.unassoc_actor, name='unassoc_actor'),
+  
+    path('accounts/signup/', views.signup, name='signup')
 
 ]

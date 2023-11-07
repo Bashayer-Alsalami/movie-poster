@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 RANKING=(
@@ -27,6 +29,7 @@ class MoviePoster(models.Model):
   duration = models.DurationField()
   image = models.ImageField(upload_to ="main_app/static/uploads", default="")
   actors = models.ManyToManyField(Actor)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def get_absolute_url(self):
     return reverse('detail', kwargs={'movieposter_id': self.id} )

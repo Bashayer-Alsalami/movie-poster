@@ -18,11 +18,22 @@
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li>
+
+          {% if user.is_authenticated %}
           <li> <a href="{% url 'movieposter_create' %}">Add Movie Poster</a></li>
           <li><a href="{% url 'index' %}">View All My Poster</a></li>
 
           <li><a href="{% url 'actors_index' %}">View All Actors</a></li>
           <li><a href="{% url 'actors_create' %}">Add Actor</a></li>
+          
+        <li><a href="{% url 'logout' %}">LogOut</a></li>
+        Welcome {{user.username}}
+        {% else %}
+
+        <li><a href="{% url 'login' %}">LogIn</a></li>
+        <li><a href="{% url 'signup' %}">SignUp</a></li>
+
+        {% endif %}
         </ul>
   
       </div>

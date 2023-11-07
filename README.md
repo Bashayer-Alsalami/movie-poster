@@ -1,1 +1,1 @@
-# Coins-Collector
+# Movie-Poster-Collector
